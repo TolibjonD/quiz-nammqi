@@ -27,10 +27,8 @@
     <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{key}}" aria-expanded="true" aria-controls="panelsStayOpen-collapse{{key}}">
-            <i class="fa-solid fa-circle-question fa-lg" style="color: #fd0d55;"></i> 
-            &nbsp;
-            {{key}}-Savol: 
-            &nbsp;
+            <strong>{{key}}-</strong><i class="fa-solid fa-circle-question fa-lg" style="color: #fd0d55;"></i> 
+            : 
             {% for key,value in value.items %}
             <strong class="text-danger">
               {{key}}
