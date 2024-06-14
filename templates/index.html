@@ -5,11 +5,12 @@
 {% block content %}
 
 <hr>
-<strong>Bo'limlar</strong> <br>
+<strong>Fanlar</strong> ( <small class="text-danger">Fanni tanlash uchun ustiga bosing !</small> )<br>
 {% for category in categories %}
 <ul class="list-group">
-    <li class="list-group-item " aria-current="true">
-        <a href="?index={{forloop.counter}}" class="text-black" style="text-decoration: none;">
+    <li class="list-group-item bg-success" aria-current="true">
+      <i class="fa-solid fa-list" style="color: #63E6BE;"></i>
+        <a href="?index={{forloop.counter}}" class="text-white" style="text-decoration: none;">
             {{ category }}
         </a>
     </li>
@@ -26,15 +27,21 @@
     <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{key}}" aria-expanded="true" aria-controls="panelsStayOpen-collapse{{key}}">
+            <i class="fa-solid fa-circle-question fa-lg" style="color: #fd0d55;"></i> 
+            &nbsp;
             {{key}}-Savol: 
+            &nbsp;
             {% for key,value in value.items %}
-            {{key}}
+            <strong class="text-danger">
+              {{key}}
+            </strong>
             {% endfor %}
           </button>
         </h2>
         <div id="panelsStayOpen-collapse{{key}}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}">
           <div class="accordion-body">
             {% for key,value in value.items %}
+            <i class="fa-solid fa-circle-info fa-lg" style="color: #63E6BE;"></i>
             {{value}}
             {% endfor %}
           </div>
