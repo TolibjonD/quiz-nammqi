@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %} -Saidkodirov| Bosh sahifa {% endblock title %}
+
+{% block content %}
+
+<hr>
+<strong>Bo'limlar</strong> <br>
+{% for category in categories %}
+<ul class="list-group">
+    <li class="list-group-item " aria-current="true">
+        <a href="?index={{forloop.counter}}" class="text-black" style="text-decoration: none;">
+            {{ category }}
+        </a>
+    </li>
+  </ul>
+
+{% endfor %}
+<hr>
+
+<h3>{{ title }}</h3>
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+
+    {% for key, value in data.items %}
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{key}}" aria-expanded="true" aria-controls="panelsStayOpen-collapse{{key}}">
+            {{key}}-Savol: 
+            {% for key,value in value.items %}
+            {{key}}
+            {% endfor %}
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapse{{key}}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}">
+          <div class="accordion-body">
+            {% for key,value in value.items %}
+            {{value}}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock content %}
