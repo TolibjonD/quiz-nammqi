@@ -14,11 +14,14 @@ def index(request):
     A = []
     for i in titles:
         A.append(i.title)
-    if int(index) < 0 or int(index)-1 > len(titles):
+    if int(index) < 0 or int(index) > len(titles):
         index=0
         quiz = Quiz.objects.all()[0]
     else:
-        quiz = Quiz.objects.all()[index-1]
+        if index > 0:
+            quiz = Quiz.objects.all()[index-1]
+        else:
+            quiz = Quiz.objects.all()[0]
     print(index)
     data = file_reader(quiz.file.path)
     context = {
