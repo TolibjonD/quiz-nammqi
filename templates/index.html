@@ -11,13 +11,13 @@
   <ul class="dropdown-menu">
     {% for category in categories %}
     <li>
-      <a class="dropdown-item {% if forloop.counter == index %} bg-success text-white {% else %} text-dark {% endif %}" href="?index={{forloop.counter}}">
+      <a class="dropdown-item {% if forloop.counter == index %} bg-success text-white {% else %} text-dark {% endif %}" href="?index={{forloop.counter}}" style="font-size: 12px;">
         {% if forloop.counter == index %}
         <span class="badge text-bg-dark">
           {% get_hit_count for quiz %} | <i class="fa-solid fa-eye"></i>
         </span>
         {% endif %}
-      {{ category }}
+      {{ category|truncatechars:58 }}
     </a>
   </li>
     {% endfor %}
