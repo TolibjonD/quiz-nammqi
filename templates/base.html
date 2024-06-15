@@ -19,8 +19,6 @@
                 <i class="fa-solid fa-phone fa-xl" style="color: #000;"></i>
             </a>
         </center>
-        <p class="mb-3"></p>
-        <br>
         {% if request.user.is_authenticated %}
         {% if request.user.is_superuser %}
         <a href="{% url "upload-quiz" %}" class="btn btn-primary">Fayl biriktirish</a>

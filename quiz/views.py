@@ -4,6 +4,9 @@ from .forms import QuizForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Quiz
 from file_reader import file_reader
+from hitcount.models import HitCount
+from hitcount.views import HitCountMixin
+
 # Create your views here.
 def index(request):
     if request.GET.get('index'):
@@ -22,12 +25,15 @@ def index(request):
             quiz = Quiz.objects.all()[index-1]
         else:
             quiz = Quiz.objects.all()[0]
-    print(index)
+    hit_count = HitCount.objects.get_for_object(quiz)
+    hit_count_response = HitCountMixin.hit_count(request, hit_count)
     data = file_reader(quiz.file.path)
     context = {
         "title": quiz.title,
         "data": data,
-        "categories": A
+        "categories": A,
+        "quiz": quiz,
+        "index": int(index)
     }
     return render(request, "index.html", context)
 

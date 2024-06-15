@@ -1,22 +1,28 @@
 {% extends "base.html" %}
-
+{% load hitcount_tags %}
 {% block title %} -Saidkodirov| Bosh sahifa {% endblock title %}
 
 {% block content %}
-
 <hr>
-<strong>Fanlar</strong> ( <small class="text-danger">Fanni tanlash uchun ustiga bosing !</small> )<br>
-{% for category in categories %}
-<ul class="list-group">
-    <li class="list-group-item bg-success" aria-current="true">
-      <i class="fa-solid fa-list" style="color: #63E6BE;"></i>
-        <a href="?index={{forloop.counter}}" class="text-white" style="text-decoration: none;">
-            {{ category }}
-        </a>
-    </li>
+<div class="dropdown">
+  <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <strong>Fanlar ro'yxati</strong> ( <small class="text-danger">Fanni tanlash uchun ustiga bosing !</small> )
+  </button>
+  <ul class="dropdown-menu">
+    {% for category in categories %}
+    <li>
+      <a class="dropdown-item {% if forloop.counter == index %} bg-success text-white {% else %} text-dark {% endif %}" href="?index={{forloop.counter}}">
+        {% if forloop.counter == index %}
+        <span class="badge text-bg-dark">
+          {% get_hit_count for quiz %} | <i class="fa-solid fa-eye"></i>
+        </span>
+        {% endif %}
+      {{ category }}
+    </a>
+  </li>
+    {% endfor %}
   </ul>
-
-{% endfor %}
+</div>
 <hr>
 
 <h3>{{ title }}</h3>
