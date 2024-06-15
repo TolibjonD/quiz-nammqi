@@ -26,6 +26,11 @@
 <hr>
 
 <h3>{{ title }}</h3>
+{% if audio %}
+<audio controls>
+  <source src="{{ audio }}">
+</audio>
+{% endif %}
 
 <div class="accordion" id="accordionPanelsStayOpenExample">
 
