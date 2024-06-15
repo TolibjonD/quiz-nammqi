@@ -30,29 +30,13 @@ def index(request):
     hit_count = HitCount.objects.get_for_object(quiz)
     hit_count_response = HitCountMixin.hit_count(request, hit_count)
     data = file_reader(quiz.file.path)
-
-    print(data)
-
-    data_total_text = ""
-
-    for key, value in data.items():
-        data_total_text += f" {key}-savol: "
-        for key, value in value.items():
-            data_total_text += f" {key} . Javob: {value} "
-
-    try:
-        audio_result = tts(data_total_text)
-        audio = get_audio(audio_result)
-    except:
-        audio = False
-    print(data_total_text)
+    
     context = {
         "title": quiz.title,
         "data": data,
         "categories": A,
         "quiz": quiz,
         "index": int(index),
-        "audio": audio
     }
     return render(request, "index.html", context)
 

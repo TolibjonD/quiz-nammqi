@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% load hitcount_tags %}
 {% block title %} -Saidkodirov| Bosh sahifa {% endblock title %}
-
+{% load static %}
 {% block content %}
 <hr>
+<audio controls>
+<source src="{% static 'audio/welcome !.mp3' %}" type="audio/mp3">
+</audio>
 <div class="dropdown">
   <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     <strong>Fanlar </strong> ( <small class="text-danger">Tanlash uchun ustiga bosing !</small> )
@@ -26,11 +29,6 @@
 <hr>
 
 <h3>{{ title }}</h3>
-{% if audio %}
-<audio controls>
-  <source src="{{ audio }}">
-</audio>
-{% endif %}
 
 <div class="accordion" id="accordionPanelsStayOpenExample">
 
